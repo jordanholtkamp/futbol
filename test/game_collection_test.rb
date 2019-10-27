@@ -77,4 +77,8 @@ class GamecollectionTest < Minitest::Test
   def test_it_can_return_average_goals_per_game
     assert_equal 3.92, @game_collection.average_goals_per_game
   end
+
+  def test_it_can_calculate_best_offense
+  end
+
 end
