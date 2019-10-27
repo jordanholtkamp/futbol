@@ -84,5 +84,9 @@ class GameCollection
   def worst_offense
   end
 
+  def best_defense
+  end
+  
+
 
 end
