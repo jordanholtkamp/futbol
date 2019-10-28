@@ -78,19 +78,4 @@ class GameCollection
     (goals.to_f / @games.length).round(2)
   end
 
-  def best_offense
-  end
-
-  def worst_offense
-  end
-
-  def best_defense
-  end
-
-  def worst_defense
-  end
-
-
-
-
 end

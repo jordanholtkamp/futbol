@@ -61,4 +61,17 @@ class StatTracker
   def average_goals_per_game
     @games.average_goals_per_game
   end
+
+  def best_offense
+  end
+
+  def worst_offense
+  end
+
+  def best_defense
+  end
+
+  def worst_defense
+  end
+  
 end
