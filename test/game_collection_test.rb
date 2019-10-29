@@ -79,6 +79,7 @@ class GamecollectionTest < Minitest::Test
   end
 
   def test_it_can_calculate_best_offense
+    assert_equal 5, @game_collection.best_offense
   end
 
 end
