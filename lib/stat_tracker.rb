@@ -63,15 +63,19 @@ class StatTracker
   end
 
   def best_offense
+    @teams.best_offense
   end
 
   def worst_offense
+    @teams.worst_offense
   end
 
   def best_defense
+    @teams.best_defense
   end
 
   def worst_defense
+    @teams.worst_defense
   end
-  
+
 end
