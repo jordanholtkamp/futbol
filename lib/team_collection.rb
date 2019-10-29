@@ -1,4 +1,5 @@
 require_relative 'team'
+require_relative 'game_team'
 require 'CSV'
 
 class TeamCollection
@@ -13,4 +14,16 @@ class TeamCollection
 
     csv.map { |row| Team.new(row) }
   end
-end
+
+  def best_offense
+    @teams.max_by { |team| team.average_goals_per_game }
+  end
+
+  def worst_offense
+    @teams.min_by { |team| team.average_goals_per_game }
+    end #Do I need .teamName after end? I am only getting "nil" to return
+  end
+
+  def best_defense
+    @teams.min_by { |team| team.average_goals_allowed_per_game }
+  end
