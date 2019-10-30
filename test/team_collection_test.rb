@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 require './lib/team_collection'
 require './lib/stat_tracker'
+require './lib/team'
 
 class TeamCollectionTest < Minitest::Test
 
@@ -12,6 +13,5 @@ class TeamCollectionTest < Minitest::Test
     assert_instance_of TeamCollection, @team_collection
   end
 
-  
 
 end

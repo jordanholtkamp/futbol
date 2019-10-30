@@ -44,4 +44,21 @@ class GameTeamCollectionTest < Minitest::Test
   def test_away_win_percentage
     assert_equal 100.0, @game_team_collection.away_win_percentage[16]
   end
+
+  def test_it_can_calculate_best_offense
+    assert_equal "team name", @game_team_collection.best_offense
+  end
+
+  def test_it_can_calculate_worst_offense
+    assert_equal "team name", @game_team_collection.worst_offense
+  end
+
+  def test_it_can_calculate_best_defense
+    assert_equal "team name", @game_team_collection.best_defense
+  end
+
+  def test_it_can_calculate_worst_defense
+    assert_equal "team name", @game_team_collection.worst_defense
+  end
+
 end

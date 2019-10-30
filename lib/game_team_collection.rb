@@ -102,4 +102,36 @@ class GameTeamCollection
       (away_win_count * 100).to_f / away_game_count
     end
   end
+
+  def average_goals_scored_per_game
+    goal_count = @game_teams.sum do |game|
+      game.goals
+    end
+    (goal_count / @game_teams.length.to_f).round(2)
+  end
+
+  def best_offense
+    @game_teams.max_by do |team|
+      team.
+    end
+  end
+
+  def worst_offense
+    @game_teams.min_by do |team|
+      team.
+    end
+  end
+
+  def best_defense
+    @game_teams.min_by do |team|
+      team.
+    end
+  end
+
+  def worst_defense
+    @game_teams.max_by do |team|
+      team.
+    end
+  end
+
 end
