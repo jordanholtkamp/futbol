@@ -1,4 +1,5 @@
 require_relative 'team'
+require_relative 'game_team'
 require 'CSV'
 
 class TeamCollection
@@ -9,15 +10,20 @@ class TeamCollection
   end
 
   def create_teams(csv_file_path)
-    team_array = []
-      CSV.foreach("#{csv_file_path}", headers: true, header_converters: :symbol) do |row|
-        team_array << Team.new(row)
-      end
-    team_array
+    csv = CSV.foreach("#{csv_file_path}", headers: true, header_converters: :symbol)
+
+    csv.map { |row| Team.new(row) }
   end
 
-  def assocate_team_id_with_team_name
-
+  def best_offense
+    @teams.max_by { |team| team.average_goals_per_game }
   end
 
-end
+  def worst_offense
+    @teams.min_by { |team| team.average_goals_per_game }
+    end #Do I need .teamName after end? I am only getting "nil" to return
+  end
+
+  def best_defense
+    @teams.min_by { |team| team.average_goals_allowed_per_game }
+  end
