@@ -1,9 +1,14 @@
 require_relative './game_collection'
 require_relative './team_collection'
 require_relative './game_team_collection'
-require 'pry'
+require_relative './goal_average_module'
+require_relative './helper'
+
 
 class StatTracker
+  include GoalAverage
+  include Helper
+attr_reader :game_teams, :games, :teams
 
   def self.from_csv(locations)
     game_path = locations[:games]
@@ -61,4 +66,9 @@ class StatTracker
   def average_goals_per_game
     @games.average_goals_per_game
   end
+
+  def count_of_teams
+    @game_teams.count_of_teams
+  end
+
 end

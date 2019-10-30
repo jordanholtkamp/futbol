@@ -9,8 +9,11 @@ class GameCollection
   end
 
   def create_games(csv_file_path)
-    csv = CSV.foreach("#{csv_file_path}", headers: true, header_converters: :symbol)
-    csv.map { |row| Game.new(row) }
+    game_array = []
+      CSV.foreach("#{csv_file_path}", headers: true, header_converters: :symbol) do |row|
+        game_array << Game.new(row)
+      end
+    game_array
   end
 
   def highest_total_score
@@ -30,17 +33,17 @@ class GameCollection
 
   def percentage_home_wins
     h_win = @games.count { |game| game.away_goals < game.home_goals }
-    ((h_win * 100.00).to_f / @games.length).round(2)
+    ((h_win).to_f / @games.length).round(2)
   end
 
   def percentage_visitor_wins
     v_win = @games.count { |game| game.away_goals > game.home_goals }
-    ((v_win * 100.00).to_f / @games.length).round(2)
+    ((v_win).to_f / @games.length).round(2)
   end
 
   def percentage_ties
     ties = @games.count { |game| game.away_goals == game.home_goals }
-    ((ties * 100.00).to_f / @games.length).round(2)
+    ((ties).to_f / @games.length).round(2)
   end
 
   def count_of_games_by_season
@@ -77,4 +80,36 @@ class GameCollection
     end
     (goals.to_f / @games.length).round(2)
   end
+
+  def number_away_games_by_away_team_id
+    @games.reduce(Hash.new(0)) do |games_by_id, game|
+      games_by_id[game.away_team_id] += 1
+      games_by_id
+    end
+  end
+
+  def total_away_goals_by_away_team_id
+    @games.reduce(Hash.new(0)) do |total_goals_by_id, game|
+      total_goals_by_id[game.away_team_id] += game.away_goals
+      total_goals_by_id
+    end
+  end
+
+  def average_away_goals_by_away_team_id
+    total_away_goals_by_away_team_id.merge(number_away_games_by_away_team_id) do |away_team_id, total_goals, total_games|
+      total_goals / total_games
+    end
+  end
+
+  def away_team_id_for_highest_average_goals
+    highest_average = average_away_goals_by_away_team_id.values.sort.last
+    average_away_goals_by_away_team_id.key(highest_average)
+  end
+
+  def away_team_id_for_lowest_average_goals
+    lowest_average = average_away_goals_by_away_team_id.values.sort.first
+    average_away_goals_by_away_team_id.key(lowest_average)
+  end
+
+
 end
