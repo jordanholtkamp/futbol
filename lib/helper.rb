@@ -1,21 +1,6 @@
-# require_relative './game_team'
-# require_relative './team'
-# require 'CSV'
+
 
 module Helper
-  # attr_reader :game_teams, :teams
-  # def initialize(csv_file_path_1, csv_file_path_2)
-  #   @game_teams = create_game_teams(csv_file_path_1)
-  #   @teams = create_teams(csv_file_path_2)
-  # end
-  #
-  # def create_game_teams(csv_file_path_1)
-  #   GameTeamCollection.new("./test/dummy_game_team_data.csv")
-  # end
-  #
-  # def create_teams(csv_file_path_2)
-  #   TeamCollection.new("./data/teams.csv")
-  # end
 
   def winningest_team
     most_wins_team = @teams.teams.find do |team|

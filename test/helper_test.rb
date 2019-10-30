@@ -1,16 +1,13 @@
 require_relative 'test_helper'
-require './lib/fan_collection'
+require './lib/helper'
 require './lib/stat_tracker'
 
-class FanTest < Minitest::Test
+class HelperTest < Minitest::Test
   def setup
-    @fan = Fan.new("./test/dummy_game_team_data.csv", "./data/teams.csv")
-    @game_teams = GameTeamCollection.new("./test/dummy_game_team_data.csv")
-    @teams = TeamCollection.new("./data/teams.csv")
-  end
-
-  def test_it_exists
-    assert_instance_of Fan, @fan
+  @stat_tracker = StatTracker.new("./test/dummy_game_data.csv", "./test/dummy_game_team_data.csv", "./test/dummy_team_data.csv")
+  #   @fan = Fan.new("./test/dummy_game_team_data.csv", "./data/teams.csv")
+  #   @game_teams = GameTeamCollection.new("./test/dummy_game_team_data.csv")
+  #   @teams = TeamCollection.new("./data/teams.csv")
   end
 
   def test_it_can_create_game_teams
@@ -22,23 +19,23 @@ class FanTest < Minitest::Test
   end
 
   def test_best_fans_team_id
-    assert_equal 6, @fan.best_fans_team_id
+    assert_equal 6, @stat_tracker.best_fans_team_id
   end
 
   def test_best_fans
-    assert_equal "FC Dallas", @fan.best_fans
+    assert_equal "FC Dallas", @stat_tracker.best_fans
   end
 
   def test_worst_fans_team_id
-    assert_equal [16, 6, 9, 19, 24], @fan.worst_fans_team_id
+    assert_equal [16, 6, 9, 19, 24], @stat_tracker.worst_fans_team_id
   end
 
   def test_worst_fans
-    assert_equal ["FC Dallas", "New England Revolution", "New York City FC", "Philadelphia Union", "Real Salt Lake"], @fan.worst_fans
+    assert_equal ["FC Dallas", "New England Revolution", "New York City FC", "Philadelphia Union", "Real Salt Lake"], @stat_tracker.worst_fans
   end
 
   def test_winningest_team
-    assert_equal "New England Revolution", @fan.winningest_team_name
+    assert_equal "New England Revolution", @stat_tracker.winningest_team_name
   end
 
 end

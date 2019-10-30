@@ -16,9 +16,7 @@ class GameTeamCollectionTest < Minitest::Test
     assert_equal 12, @game_team_collection.count_of_teams
   end
 
-
   def test_home_games
-    # expected = {6=>1, 5=>1, 16=>2, 17=>4, 9=>1, 19=>1, 24=>2, 2=>1, 3=>2, 26=>1}
     assert_equal 16, @game_team_collection.home_games.values.sum
   end
 
