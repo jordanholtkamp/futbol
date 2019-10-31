@@ -1,5 +1,3 @@
-
-
 module Helper
 
   def winningest_team

@@ -4,7 +4,7 @@ require './lib/stat_tracker'
 
 class StatTrackerTest < Minitest::Test
   def setup
-    @stat_tracker = StatTracker.new("./test/dummy_game_data.csv", "./test/dummy_game_team_data.csv", "./test/dummy_team_data.csv")
+    @stat_tracker = StatTracker.new("./test/dummy_game_data.csv", "./test/dummy_team_data.csv",  "./test/dummy_game_team_data.csv")
   end
 
   def test_it_exists
@@ -89,7 +89,7 @@ class StatTrackerTest < Minitest::Test
   end
 
   def test_worst_fans
-    assert_equal ["FC Dallas", "New England Revolution", "New York City FC", "Philadelphia Union", "Real Salt Lake"], @fan.worst_fans
+    assert_equal ["FC Dallas", "New England Revolution", "New York City FC", "Philadelphia Union", "Real Salt Lake"], @stat_tracker.worst_fans
   end
 
   def test_winningest_team

@@ -68,5 +68,4 @@ attr_reader :game_teams, :games, :teams
   def count_of_teams
     @game_teams.count_of_teams
   end
-
 end
