@@ -4,7 +4,7 @@ require './lib/stat_tracker'
 
 class StatTrackerTest < Minitest::Test
   def setup
-    @stat_tracker = StatTracker.new("./test/dummy_game_data.csv", "./test/dummy_game_team_data.csv", "./test/dummy_team_data.csv")
+    @stat_tracker = StatTracker.new("./test/dummy_game_data.csv", "./test/dummy_team_data.csv",  "./test/dummy_game_team_data.csv")
   end
 
   def test_it_exists
@@ -24,17 +24,16 @@ class StatTrackerTest < Minitest::Test
   end
 
   def test_percentage_home_wins
-    assert_equal 33.33, @stat_tracker.percentage_home_wins
-    #3 wins in test sample
+    assert_equal 0.33, @stat_tracker.percentage_home_wins
   end
 
   def test_percentage_visitor_wins
-    assert_equal 41.67, @stat_tracker.percentage_visitor_wins
+    assert_equal 0.42, @stat_tracker.percentage_visitor_wins
     #5 wins in test sample
   end
 
   def test_percentage_ties
-    assert_equal 25.00, @stat_tracker.percentage_ties
+    assert_equal 0.25, @stat_tracker.percentage_ties
   end
 
   def test_it_can_give_number_of_games_in_season
@@ -75,5 +74,26 @@ class StatTrackerTest < Minitest::Test
 
   def test_it_can_return_average_goals_per_game
     assert_equal 3.92, @stat_tracker.average_goals_per_game
+  end
+
+  def test_best_fans_team_id
+    assert_equal 6, @stat_tracker.best_fans_team_id
+  end
+
+  def test_best_fans
+    assert_equal "FC Dallas", @stat_tracker.best_fans
+  end
+
+  def test_worst_fans_team_id
+    assert_equal [16, 6, 9, 19, 24], @stat_tracker.worst_fans_team_id
+  end
+
+  def test_worst_fans
+    assert_equal ["FC Dallas", "New England Revolution", "New York City FC", "Philadelphia Union", "Real Salt Lake"], @stat_tracker.worst_fans
+  end
+
+  def test_winningest_team
+    skip
+    assert_equal "New England Revolution", @stat_tracker.winningest_team
   end
 end
